@@ -1,0 +1,17 @@
+1
+2
+3 # inline comment
+4
+5
+-1
+nan
+-2
+
+-3
+
+# This is a comment
+
+
+-4
+
+inf
