@@ -28,7 +28,7 @@ for item in result:
 
 print("Log file - - - - - - -")
 
-with open('test.log', 'r') as f:
+with open('imports/itertools/test.log', 'r') as f:
     header = islice(f, 2)
     for line in header:
         print(line, end='')

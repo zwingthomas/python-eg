@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Self  # new in Python 3.11
 
 #
