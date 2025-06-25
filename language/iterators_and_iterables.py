@@ -1,3 +1,8 @@
+# What is the iteration protocol in Python?
+# 1. is the object iterable?
+# 2. if you are iterable, then give me your next item
+# 3. repeat (2) until we get a StopIteration exception
+
 # A list is an iterable, it is not an iterator
 # When something is iterable all it means at a high level is that it can
 # be looped over.
