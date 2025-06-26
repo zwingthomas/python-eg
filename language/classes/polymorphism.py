@@ -1,4 +1,7 @@
-
+# Acknowledgements____
+# Indently
+# What is Polymorphism in Python?
+# https://www.youtube.com/watch?v=AfBc7yyigl4&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=27&ab_channel=Indently
 
 from abc import ABC, abstractmethod
 print(len("Thomas Zwinger"))  # Calculates the length of the string

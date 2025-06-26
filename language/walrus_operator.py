@@ -1,3 +1,9 @@
+# Acknowledgements____
+# k0nze
+# The Python Walrus Operator is Awesome!
+# https://www.youtube.com/watch?v=e0vFRnEv16I&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=24&ab_channel=k0nze
+
+
 # Assignment expression operator (Python 3.8)
 
 a = 42  # nothing is returned: assignment
@@ -32,6 +38,3 @@ b = 8
 while (d := distance(a, b)) > 3:
     print(f"The distance between a and b is {d}")
     a += 1
-
-
-names = ["Olivia", "Emma", "Sophia", "Isabella", "Mia"]

@@ -1,3 +1,8 @@
+# Acknowledgements____
+# Bro Code
+# Learn Python ABSTRACT CLASSES in 7 minutes! 👻
+# https://www.youtube.com/watch?v=97V7ICVeTJc&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=26&ab_channel=BroCode
+
 """ 
 In this file we cover:
 - Inheritance

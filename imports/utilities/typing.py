@@ -1,3 +1,9 @@
+# Acknowledgements____
+# Tech with Tim
+# Python Typing - Type Hints & Annotations
+# https://www.youtube.com/watch?v=QORvB-_mbZ0&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=21&ab_channel=TechWithTim
+
+
 # Reasons to do type annotations
 # 1. Documentation
 # 2. Better autocomplete

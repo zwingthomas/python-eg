@@ -1,4 +1,4 @@
-# Acknowledgement____
+# Acknowledgements____
 # Tech with Tim
 # Expert Python Tutorial #6 - Context Managers
 # https://www.youtube.com/watch?v=Lv1treHIckI&ab_channel=TechWithTim

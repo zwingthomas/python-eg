@@ -1,3 +1,8 @@
+# Acknowledgements
+# NeuralNine
+# Encapsulation - Advanced Python Tutorial #5
+# https://www.youtube.com/watch?v=dzmYoSzL8ok&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=28&ab_channel=NeuralNine
+
 """
 Python does not have strict access modifiers like private, protected,
 or public from languages like Java or C++. But it uses naming

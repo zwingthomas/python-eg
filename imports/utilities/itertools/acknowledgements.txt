@@ -1,0 +1,4 @@
+Acknowledgements____
+Corey Schafer
+Python Tutorial: Itertools Module - Iterator Functions for Efficient Looping
+https://www.youtube.com/watch?v=Qu3dThVy6KQ&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=18&ab_channel=CoreySchafer

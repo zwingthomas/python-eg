@@ -1,3 +1,9 @@
+# Acknowledgements____
+# Bro Code
+# Python method overriding 🙅
+# https://www.youtube.com/watch?v=4Y83cUbDKZ8&ab_channel=BroCode
+
+
 """
 Instances will use methods that more closely relate to their given 
 object provided their method signatures match.

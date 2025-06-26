@@ -1,3 +1,8 @@
+# Acknowledgements____
+# mCoding
+# Python Generators
+# https://www.youtube.com/watch?v=tmeKsb2Fras&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=6&ab_channel=mCoding
+
 import collections
 import time
 

@@ -1,3 +1,13 @@
+# Acknowledgements____
+
+# Corey Schafer
+# Python Tutorial: Iterators and Iterables - What Are They and How Do They Work?
+# https://www.youtube.com/watch?v=jTYiNjvnHZY&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=3&ab_channel=CoreySchafer
+
+# Python and Pandas with Reuven Lerner
+# Python interview question #33: Iterator protocol
+# https://www.youtube.com/watch?v=SwZTybphARU&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=4&ab_channel=PythonandPandaswithReuvenLerner
+
 # What is the iteration protocol in Python?
 # 1. is the object iterable?
 # 2. if you are iterable, then give me your next item

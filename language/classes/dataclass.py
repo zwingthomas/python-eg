@@ -1,3 +1,8 @@
+# Acknowledgements____
+# Tech with Tim
+# Python Data Classes Are AMAZING! Here's Why
+# https://www.youtube.com/watch?v=5mMpM8zK4pY&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=20&ab_channel=TechWithTim
+
 from dataclasses import InitVar, dataclass, field
 from typing import ClassVar, Optional
 

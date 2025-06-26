@@ -1,3 +1,9 @@
+# Acknowledgements____
+# Tech with Tim
+# Please Master This MAGIC Python Feature... 🪄
+# https://www.youtube.com/watch?v=qqp6QN20CpE&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=5&ab_channel=TechWithTim
+
+
 # Dunder/Magic methods
 
 """

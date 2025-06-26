@@ -1,3 +1,7 @@
+# Acknowledgements____
+# Tech with Tim
+# 10 Python Comprehensions You SHOULD Be Using
+# https://www.youtube.com/watch?v=twxE0dEp3qQ&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=2&ab_channel=TechWithTim
 
 print(
     "Remove duplicates from a list while squaring the values:\n{x**2 for x in nums}")

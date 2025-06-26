@@ -1,3 +1,8 @@
+# Acknowledgements____
+# Indently
+# Class Methods, Static Methods, & Instance Methods EXPLAINED in Python
+# https://www.youtube.com/watch?v=PIKiHq1O9HQ&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&ab_channel=Indently
+
 from datetime import date
 from typing import Self  # new in Python 3.11
 

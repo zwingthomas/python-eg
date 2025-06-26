@@ -1,3 +1,9 @@
+# Acknowledgements____
+# Indently
+# Enums Explained In Under 12 Minutes In Python
+# https://www.youtube.com/watch?v=TAMbq0iRUsA&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=25&ab_channel=Indently
+
+
 from enum import Enum, Flag, auto
 
 

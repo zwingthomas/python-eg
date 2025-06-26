@@ -1,4 +1,4 @@
-# Acknowledgement____
+# Acknowledgements____
 # mCoding
 # Watch out for this (async) generator cleanup pitfall in Python
 # https://www.youtube.com/watch?v=N56Jrqc7SBk&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=15&ab_channel=mCoding
