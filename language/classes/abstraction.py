@@ -16,11 +16,11 @@ class Vehicle(ABC):
 
     @abstractmethod
     def go(self):
-        pass
+        ...  # pass
 
     @abstractmethod
     def stop(self):
-        pass
+        ...  # pass
 
 
 try:
@@ -30,7 +30,7 @@ except TypeError as e:
 
 
 class Car_no_inheritance(Vehicle):
-    pass
+    ...  # pass
 
 
 try:
@@ -68,7 +68,7 @@ motorcycle.stop()
 
 
 """
-You must inherit every single abstract method!!
+You must create every single abstract method!!
 """
 
 
