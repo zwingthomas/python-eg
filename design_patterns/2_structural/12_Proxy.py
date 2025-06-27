@@ -22,3 +22,43 @@ In brief:
     some functionality or adds its own before or after.
 
 """
+
+from abc import ABC, abstractmethod
+
+
+class Image(ABC):
+    @abstractmethod
+    def display(self):
+        ...
+
+
+class RealImage(Image):
+    def __init__(self, filename: str):
+        self.filename = filename
+        print(f"Real Image: loading {self.filename}")
+
+    def display(self):
+        print(f"Real Image: displaying {self.filename}", end="\n\n")
+
+
+class ProxyImage(Image):
+    """This is a proxy that applies a cache over loading an image"""
+
+    def __init__(self, filename: str):
+        self.filename = filename
+        self.real_image = None
+
+    def display(self):
+        print(f"Proxy Image: displaying {self.filename}")
+        if not self.real_image:
+            print("from disk")
+            self.real_image = RealImage(self.filename)
+        else:
+            print("from cache")
+        self.real_image.display()
+
+
+if __name__ == "__main__":
+    image = ProxyImage("test.jpg")
+    image.display()  # loads image from disk
+    image.display()  # loads image from cache
