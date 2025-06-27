@@ -52,6 +52,8 @@ class CurrencyFactory(ABC):
 
 
 class FiatCurrencyFactory(CurrencyFactory):
+    """This is one factory"""
+
     def currency_factory(self, country) -> str:
         if country is USA:
             return "Dollar"
@@ -62,6 +64,8 @@ class FiatCurrencyFactory(CurrencyFactory):
 
 
 class VirtualCurrencyFactory(CurrencyFactory):
+    """This is another factory"""
+
     def currency_factory(self, country):
         if country is USA:
             return "Bitcoin"
