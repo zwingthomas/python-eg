@@ -28,6 +28,7 @@ complete
 
 import os.path
 import time
+import shutil
 from multiprocessing import Pool
 
 import numpy as np
@@ -86,6 +87,8 @@ def etl_demo():
 
     end_t = time.perf_counter()
     total_duration = end_t - start_t
+
+    shutil.rmtree("sounds")  # TODO: Make a Context Manger for this
     print(f"etl took {total_duration:.2f}s total")
 
 
@@ -99,11 +102,11 @@ def run_normal(items, do_work):
     return results
 
 
-def run_with_mp_map(items, do_work, processes=None, chunksize=None):
+def run_with_mp_map(items, do_work, processes=None, chunksize=20):
     print(f"running using multiprocessing with {processes=}, {chunksize=}")
     start_t = time.perf_counter()
     with Pool(processes=processes) as pool:
-        results = pool.imap(do_work, items, chunksize=chunksize)
+        results = list(pool.imap(do_work, items, chunksize=chunksize))
     end_t = time.perf_counter()
     wall_duration = end_t - start_t
     print(f"it took: {wall_duration:.2f}s")
@@ -127,21 +130,26 @@ def n_fibs(n):
     for _ in range(n - 2):
         a, b = b, a + b
         fibs.append(b)
-    return fibs
+    return sum(fibs)
 
 
 def compare_mp_map_to_normal():
     items = list(range(10000))
-    do_work = fib
-    run_with_mp_map(items, do_work)
+    do_work = n_fibs
+    a = run_with_mp_map(items, do_work)
 
     print()
-    run_normal(items, do_work)
+    b = run_normal(items, do_work)
+    print(f"a[:20]: {a[:20]}")
+    print(f"b[:20]: {b[:20]}")
+    print(f"are they equivalent? {a == b}")
 
 
 def main():
     etl_demo()
-    # compare_mp_map_to_normal()
+
+    print("\nNow let's try calculating 10000 fib sums.")
+    compare_mp_map_to_normal()
 
 
 if __name__ == '__main__':
