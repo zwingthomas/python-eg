@@ -15,7 +15,8 @@ Briefly,
 - Originally you have undo, one step backwards, and redo, one step 
     forward. However there is no real reason to limit to just that.
 
-We are going to be making a 
+We are going to be making a simple implementation of storing state
+that is overwritten one string at a time.
 
 """
 
