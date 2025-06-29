@@ -153,6 +153,8 @@ class InventoryItem:
             raise ValueError("These are not the same item.")
         raise TypeError("Cannot compare items of different types.")
 
+    # TODO: __getstate__ & __setstate__
+
 
 item1 = InventoryItem("Apple", 50)
 item2 = InventoryItem("Apple", 30)
