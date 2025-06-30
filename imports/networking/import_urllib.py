@@ -15,13 +15,13 @@ clients like **requests** and **httpx**.
 Feature snapshot
 ----------------
 | Feature                         | http.client | urllib   | requests | httpx |
-|---------------------------------|-------------|----------|----------|--------|
-| High‑level URL opener           | ❌          | ✅       | ✅       | ✅ |
-| Automatic JSON helpers          | ❌          | ❌       | ✅       | ✅ |
-| Cookie & redirect handling      | ❌          | ⚠️ *      | ✅       | ✅ |
-| Async API                       | ❌          | ❌       | ❌       | ✅ |
-| HTTP/2                          | ❌          | ❌       | ❌       | ✅ |
-| Pluggable auth/proxy handlers   | ❌          | ✅       | ✅       | ✅ |
+|---------------------------------|-------------|----------|----------|-------|
+| High‑level URL opener           | ❌          | ✅       | ✅        |  ✅   |
+| Automatic JSON helpers          | ❌          | ❌       | ✅        |  ✅   |
+| Cookie & redirect handling      | ❌          | ⚠️ *     | ✅        |  ✅   |
+| Async API                       | ❌          | ❌       | ❌        |  ✅   |
+| HTTP/2                          | ❌          | ❌       | ❌        |  ✅   |
+| Pluggable auth/proxy handlers   | ❌          | ✅       | ✅        |  ✅   |
 
 *via HTTPCookieProcessor
 
