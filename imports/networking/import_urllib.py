@@ -18,10 +18,12 @@ Feature snapshot
 |---------------------------------|-------------|----------|----------|--------|
 | High‑level URL opener           | ❌          | ✅       | ✅       | ✅ |
 | Automatic JSON helpers          | ❌          | ❌       | ✅       | ✅ |
-| Cookie & redirect handling      | ❌          | ⚠️ via HTTPCookieProcessor | ✅ | ✅ |
+| Cookie & redirect handling      | ❌          | ⚠️ *      | ✅       | ✅ |
 | Async API                       | ❌          | ❌       | ❌       | ✅ |
 | HTTP/2                          | ❌          | ❌       | ❌       | ✅ |
 | Pluggable auth/proxy handlers   | ❌          | ✅       | ✅       | ✅ |
+
+*via HTTPCookieProcessor
 
 Sections
 --------
