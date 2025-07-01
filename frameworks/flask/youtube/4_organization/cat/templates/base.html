@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>{% block title %} {% endblock %}</title>
+    {# Get the path for the style sheet you want to use #}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+  </body>
+</html>
