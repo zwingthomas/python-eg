@@ -1,0 +1,6 @@
+Function write_file: writing hello worldFunction write_file: finished writingFunction write_file: writing hello world
+Function write_file: finished writing
+Function write_file: writing hello world
+Function write_file: finished writing
+Function write_file: writing hello world
+Function write_file: finished writing
