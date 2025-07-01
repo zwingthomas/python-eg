@@ -7,7 +7,7 @@ where different requests will be managed by the same sequence of
 handlers, just different amounts of handlers. Maybe the handlers will
 skip the request entirely as well.
 
-Briefly:
+Briefly,
 - Defines a chain of handlers to process a request
 - Each handler contains a reference to the next handler
 - Each handler decides to process the request AND / OR pass it on

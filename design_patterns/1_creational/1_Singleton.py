@@ -10,7 +10,7 @@ may instead just want one instance. This would allow you to order the
 network calls by importance and also it is good for testing as you are
 able to test just the single resource.
 
-A singleton is:
+Briefly,
 - Only one possible instance
 - Single point of access for a resource
 - Uses:
@@ -25,7 +25,7 @@ A singleton is:
         required whereas a singleton creates its own instance.
     - Testability issues: when you have only one instance you are 
         tightly coupled with the components that need that instance. 
-        Thus you cannot really mock a singleton instance.
+        Thus you cannot really mock a singleton instance: fixtures
     - State for life: once a singleton has been instantiated you only
         have that one instance forever. You could kill it given 
         certain circumstances but that works against the singleton

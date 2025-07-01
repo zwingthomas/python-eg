@@ -16,8 +16,10 @@ Generally a framework contains many libraries
 This file running all of them is considered the 'script'.
 """
 
-from library import package
-from library.package1 import module2
+from library import package2
+from library.package2 import module1
 from library.package2.module1 import myfunction1, myfunction2, myfunction3
 
 print(f"{myfunction1()} {myfunction2()}{myfunction3()}")
+print(f"{module1.myfunction1()} {module1.myfunction2()}{module1.myfunction3()}")
+print(f"{package2.module1.myfunction1()} {package2.module1.myfunction2()}{module1.myfunction3()}")

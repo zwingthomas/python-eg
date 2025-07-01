@@ -5,7 +5,7 @@ building a tree with the language given to it. Think about a computer
 running the order or operations with a mathematical expression given 
 to it. This has a lot of applications.
 
-Briefly
+Briefly,
 - Recursively evaluate grammar and expressions
 - Parsing, processing engines, etc.
 - Two components

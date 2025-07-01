@@ -12,6 +12,7 @@ unique. However, much of the data, like the sprites for these avatars,
 can and should be shared. This allows for memory and processing to 
 have a lower footprint. 
 
+Briefly,
 - Works well when you have lots of similar objects
 - Reduces the memory footprint
 - Very efficiency focused

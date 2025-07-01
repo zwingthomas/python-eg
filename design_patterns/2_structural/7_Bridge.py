@@ -43,9 +43,11 @@ class TV(Device):
 
 
 class Remote(ABC):
+    @abstractmethod
     def volume_up(self):
         ...
 
+    @abstractmethod
     def volume_down(self):
         ...
 

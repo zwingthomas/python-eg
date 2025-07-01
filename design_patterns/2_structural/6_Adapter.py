@@ -5,7 +5,8 @@ interface of a class into another interface that the client expects.
 Such as if we wanted to work with a 3rd party library, but our client
 was incompatible with it. We would need an adapter to link the two.
 
-Converts data or calls from one form into the other.
+Briefly,
+- Converts data or calls from one form into the other.
 
 Essentially:
 Client

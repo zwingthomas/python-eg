@@ -1,8 +1,9 @@
 """
-Called either the decorator or the wrapper patern. It is very useful
+Called either the decorator or the wrapper pattern. It is very useful
 and easy to understand. It allows us to modify the behavior of a 
 function, method or a class that we do not fully have control over.
 
+Briefly,
 - Attach new behavior to an object
 - Without altering existing code
 - Overriding behavior

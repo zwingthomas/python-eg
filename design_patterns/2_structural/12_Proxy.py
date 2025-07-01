@@ -12,7 +12,7 @@ trying to access at the same time may corrupt the system.
 a cached version of the file. We could also put locks around files and
 ensure that files are consistent. 
 
-In brief:
+Briefly,
 - Provides some functionality before and/or after calling an object
 - Same interface as the original object
     - e.g. Clients do not realize they are not accessing the real disk

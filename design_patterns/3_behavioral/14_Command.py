@@ -10,7 +10,7 @@ The command takes all of the inputs from every button and then packages
 it into one thing being sent to the business logic. This allows for
 multiple servers for the business logic, load balancers, etc.
 
-Briefly
+Briefly,
 - A request is wrapped in an object that contains all request info
 - The command object is passed to the correct handler
 - Decoupling

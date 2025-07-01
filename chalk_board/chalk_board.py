@@ -66,11 +66,11 @@ class File:
         print(f"{self.id}. Entering")
         return self.f
 
-    def __exit__(self, type, value, exception):
+    def __exit__(self, type, value, traceback):
         print(f"{self.id}. Closing")
         self.f.close()
         if type:
-            print(f"3. Error handled, error: ({type}, {value}, {exception})")
+            print(f"3. Error handled, error: ({type}, {value}, {traceback})")
             return True
 
 

@@ -6,6 +6,7 @@ all the complexity that comes with the library. Instead, they should
 be able to just understand the simple facade that provides a front
 to it. A facade does this by:
 
+Briefly,
 - Providing a simple interface to a complex functionality
 - Removing the need for complex object / memory management
 - Simplifies client implementation

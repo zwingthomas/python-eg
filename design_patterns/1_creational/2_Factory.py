@@ -6,6 +6,7 @@ dynamically. This also allows for seperation of concerns between the
 object, the creation of the object, and how to use it. It does this
 through encapsulation and polymorphism.
 
+Briefly,
 - Design logic is hidden from the client
 - Many subclass types, only one instance is required
 - Creation is removed from the client
