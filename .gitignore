@@ -1,3 +1,4 @@
 imports/utilities/.mypy_cache
 imports/asynchronous/multiprocessing/sounds/*
 *__pycache__*
+*.pytest_cache*
