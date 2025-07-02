@@ -22,7 +22,7 @@ Sections
 7. dataclass_helper()        - dumping dataclasses via `asdict`
 8. main()                    - run all demos then clean tmp dir
 
-Run the file directly: `python json_module_tutorial.py`
+Run the file directly: `python import_json.py`
 """
 
 from __future__ import annotations
@@ -59,6 +59,7 @@ def quick_demo() -> None:
     print("\n[ quick_demo ]\n" + "-" * 60)
     data = {"name": "Ada", "active": True, "score": 98.5}
 
+    # TODO: Read this again, you cannot mess this up, you know it but still
     json_str = json.dumps(data)  # dict → JSON string
     print("JSON text:", json_str)
 
@@ -111,7 +112,7 @@ def dict_order_sorting() -> None:
 # ──────────────────────────────────────────────────────────────────────
 # 4. Serialising non-built-ins via default=
 # ──────────────────────────────────────────────────────────────────────
-
+# TODO: This is very cool
 def custom_types() -> None:
     print("\n[ custom_types ]\n" + "-" * 60)
 
@@ -140,7 +141,7 @@ def custom_types() -> None:
 # ──────────────────────────────────────────────────────────────────────
 # 5. Custom deserialise with object_hook / object_pairs_hook
 # ──────────────────────────────────────────────────────────────────────
-
+# TODO: Also very cool
 def custom_deserialise() -> None:
     print("\n[ custom_deserialise ]\n" + "-" * 60)
 
@@ -179,7 +180,7 @@ def stream_parse_large_file() -> None:
     print("Generated large file (~", round(
         path.stat().st_size / 1024 / 1024, 2), "MB)")
 
-    # Built-in json.load reads the whole file, so for truly huge files use ijson.
+    # Built-in json.load reads the whole file, so for truly huge files use ijson. TODO: ChatGPT a file like this for ijson
     # Here we show how to peek at the first few items using simple slicing.
     import itertools
     with path.open(encoding="utf-8") as f:

@@ -5,11 +5,11 @@
 #     https://docs.python.org/3/library/selectors.html
 # ___________________________________________________________________________
 """
-Executable tour of Python’s **socket** standard‑library module
+Executable tour of Python's **socket** standard-library module
 ==============================================================
-`socket` is the foundation layer beneath high‑level HTTP packages such as
-**requests** and **httpx**.  Here you’ll build a tiny TCP echo service, fire a
-UDP datagram, and peek at non‑blocking I/O with **selectors**.
+`socket` is the foundation layer beneath high-level HTTP packages such as
+**requests** and **httpx**.  Here you'll build a tiny TCP echo service, fire a
+UDP datagram, and peek at non-blocking I/O with **selectors**.
 
 Compared with requests / httpx
 ------------------------------
@@ -17,17 +17,17 @@ Compared with requests / httpx
 |-------------------------------|-------------|-----------|--------|
 | Raw TCP / UDP access          | ✅          | ❌        | ❌ |
 | Automatic HTTP handling       | ❌          | ✅        | ✅ |
-| Async API (high‑level)        | ❌ (low‑level only) | ❌ | ✅ |
+| Async API (high-level)        | ❌ (low-level only) | ❌ | ✅ |
 | SSL convenience               | ⚠️ via `ssl.wrap_socket` | ✅ | ✅ |
 
 Sections
 --------
-1.  tcp_echo_server()          –  threaded echo server on localhost
-2.  tcp_client()               –  connect, send, recv
-3.  udp_demo()                 –  fire‑and‑forget datagram
-4.  nonblocking_select()       –  chatty client using selectors
-5.  common_pitfalls()          –  address family, bytes vs str, lingering sockets
-6.  main()                     –  orchestrate demos & tidy up
+1.  tcp_echo_server()          -  threaded echo server on localhost
+2.  tcp_client()               -  connect, send, recv
+3.  udp_demo()                 -  fire-and-forget datagram
+4.  nonblocking_select()       -  chatty client using selectors
+5.  common_pitfalls()          -  address family, bytes vs str, lingering sockets
+6.  main()                     -  orchestrate demos & tidy up
 
 Run directly:
 
@@ -49,19 +49,21 @@ TMP_DIR = Path(__file__).with_suffix(
 TMP_DIR.mkdir(exist_ok=True)
 
 HOST = "127.0.0.1"  # loop-back only
-"127.0.0.1"  # loop‑back only
+"127.0.0.1"  # loop-back only
 
-# ──────────────────────────────────────────────────────────────────────────────
+# TODO: PSLG did require use of websockets, brush up a bit
+
+# ──────────────────────────────────────────────────────────────────────
 # Helper
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def h(title: str):
     print(f"\n[ {title} ]\n" + "-" * 60)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 1. Minimal threaded TCP echo server
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def tcp_echo_server():
@@ -91,9 +93,9 @@ def tcp_echo_server():
     print("echo server listening on", port)
     return port, srv_sock  # caller will close sock on shutdown
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 2. TCP client: connect, send, recv
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def tcp_client(port: int):
@@ -104,9 +106,9 @@ def tcp_client(port: int):
         data = sock.recv(1024)
         print("sent:", msg, "received:", data)
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 3. UDP one‑way demo
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
+# 3. UDP one-way demo
+# ──────────────────────────────────────────────────────────────────────
 
 
 def udp_demo():
@@ -116,9 +118,9 @@ def udp_demo():
         s.sendto(b"ping", ("1.1.1.1", 53))
         print("udp packet length 4 sent to 1.1.1.1:53 (fire‑and‑forget)")
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 4. Non‑blocking I/O with selectors (simple chatty client)
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
+# 4. Non-blocking I/O with selectors (simple chatty client)
+# ──────────────────────────────────────────────────────────────────────
 
 
 def nonblocking_select(port: int):
@@ -142,9 +144,9 @@ def nonblocking_select(port: int):
         sel.unregister(sock)
         sock.close()
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 5. Common pitfalls & advice
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def common_pitfalls():
@@ -153,11 +155,11 @@ def common_pitfalls():
     print("* .recv may return less than requested; loop until all data read")
     print("* AF_INET6 vs AF_INET mismatch causes connection errors")
     print("* Always close() or use `with` so sockets release ports quickly")
-    print("* TCP handshake is blocking by default – use setblocking(False) + selectors for high concurrency")
+    print("* TCP handshake is blocking by default - use setblocking(False) + selectors for high concurrency")
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 6. main orchestrator
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def main():

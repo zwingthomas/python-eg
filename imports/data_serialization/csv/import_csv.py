@@ -16,19 +16,19 @@ Why use the `csv` module instead of plain `str.split(',')`?
 * Handles embedded commas, quotes and newlines correctly.
 * Works the same way on Windows, macOS and Linux (universal newline
   handling + `newline=''` hint).
-* Lets you read rows as dictionaries — ideal for column–oriented data.
+* Lets you read rows as dictionaries — ideal for column-oriented data.
 * Gives you full control over delimiter, quote-char, escape-char,
   line-terminator & quoting policy.
 
 The file is organised like this::
 
-    ├── quick_demo()        – 10-second intro
+    ├── quick_demo()        - 10-second intro
     ├── basic_reader_writer()
     ├── dict_reader_writer()
     ├── custom_dialect()
     ├── sniff_dialect()
     ├── large_file_streaming()
-    └── main()              – runs everything & cleans up
+    └── main()              - runs everything & cleans up
 
 Run "python csv_module_tutorial.py" directly to see it all in action.
 """

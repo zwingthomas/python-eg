@@ -66,7 +66,7 @@ class InventoryItem:
     # 3. init=Bool declares whether we want it to be included in the
     # initialization.
     sizes: list[str] = field(default=["medium"], init=False)
-    # ClassVar
+    # ClassVar # TODO
     # To declare class variables you need to give the type hint for
     # ClassVar from the typing import
     class_var: ClassVar[int] = 100
@@ -93,6 +93,8 @@ print("Default mutable variables only store references")
 def func(lst=[]):
     lst.append(1)
     print(lst)
+
+# TODO: Review, also why do defaults work this way?
 
 
 func()  # outputs: [1]

@@ -1,10 +1,11 @@
 """
 Defines the **skeleton of an algorithm** in a base (abstract) class,
 letting subclasses provide concrete implementations for one or more
-steps.  The template ensures the overall *sequence* stays unchanged.
+steps. The template ensures the overall *sequence* stays unchanged.
 
 Briefly,
-- An abstract class declares **template_method()**—the high-level workflow.
+- An abstract class declares **template_method()**—the high-level 
+    workflow.
 - Primitive operations are marked abstract; subclasses fill them in.
 - Hook methods can provide optional extension points.
 

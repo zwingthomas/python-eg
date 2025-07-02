@@ -2,6 +2,8 @@ from functools import WRAPPER_ASSIGNMENTS
 from functools import wraps, update_wrapper
 import time
 
+# TODO: Review updated and assigned
+
 """
 functools.update_wrapper() is the low-level helper that actually copies
 dunder methods from the "real" function onto the wrapper after the 

@@ -1,6 +1,8 @@
 from itertools import accumulate, repeat
 import operator
 
+# TODO: Add explanation
+
 print("Accumulating by going over a list of ones with addition")
 numbers = repeat(1, times=10)
 result = accumulate(numbers)

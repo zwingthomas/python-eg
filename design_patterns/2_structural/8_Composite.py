@@ -17,6 +17,8 @@ We are going to implement what we've talked about as a theoretical
 example.
 """
 
+# TODO: Mezmorize this one's implementation
+
 
 class Equipment:
     """Acts as the tree leaves"""
@@ -37,6 +39,7 @@ class Composite:
         self.items.append(equipment)
         return self
 
+    # TODO: Learn this
     @property
     def price(self):
         return sum(x.price for x in self.items)

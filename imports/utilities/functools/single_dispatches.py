@@ -3,6 +3,8 @@ from functools import singledispatch, singledispatchmethod
 # Note: These only look at the first argument. To do more than the first
 # argument, use type rich dataclasses or tuples.
 
+# TODO: ABSOLUTELY COMMIT THIS TO MEMORY, Method Overloading
+
 
 @singledispatch
 def handle_error(error):

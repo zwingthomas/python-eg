@@ -3,6 +3,8 @@ from flask import Blueprint, render_template
 # Always name this after the file, the second import will always be
 # __name__ pretty much. You should also link up your static and
 # templates folders.
+
+# TODO: Implement this for Traxy
 second = Blueprint("second",
                    __name__,
                    static_folder="static",

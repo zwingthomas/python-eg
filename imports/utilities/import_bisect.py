@@ -60,8 +60,8 @@ a_with_indexes = [(i, num) for i, num in zip(count(), a)]
 i = bisect.bisect_right(a, 54)
 print("Now the first number strictly > is at index: ", i)
 print(a_with_indexes[i - 4: i + 5])
-print("bisect.bisect_right found the first item greater than or equal to 54")
-print("Subtract 1 from this index to find the first element less than 54")
+print("bisect.bisect_right found the first item greater than 54")
+print("Subtract 1 from this index to find the first element less than or equal to 54")
 
 
 """
@@ -73,7 +73,6 @@ proper place and there is not a difference between these two.
 
 But if there is a match, and you're using mutable type-rich objects, 
 then you will see a very big difference between the two.
-
 """
 
 

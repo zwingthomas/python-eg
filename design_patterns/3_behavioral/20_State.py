@@ -1,5 +1,5 @@
 """
-The State is basically thinking about your code as a state machine or a 
+State is basically thinking about your code as a state machine or a 
 state algorithm. Essentially like your code can be in a variety of 
 states and it cannot deviate from those. Such as an author moving
 from Draft to Moderation, they can then move back to Draft, or move on
@@ -17,7 +17,8 @@ Briefly,
 Our implementation will be logically quite simple. But it takes quite
 a bit of code. Imagine a game with four states that it can be in: 
 Welcome screen state, Playing state, Paused state, End game state. 
-So we have the option to go back and forth between these states.
+So we have the option to go back and forth between these states, with
+some rules of **how** we can move between the states.
 
 """
 

@@ -10,8 +10,8 @@ In this file we cover:
 - Interfaces
 
 An abstract class is a class that cannot be instantiated on its own;
-meant to be subclasses. They can contain abstract methods, which are 
-declares but have no implementation. 
+meant to be subclassed. They can contain abstract methods, which are 
+declared but have no implementation. 
 
 The benefits of these are:
 1. Prevents instantiation of the class itself
@@ -29,11 +29,13 @@ An abstract class:
 3. Can include attributes (both concrete or abstract)
 4. Cannot be instantiaed directly
 5. Is defined using abc.ABC and @abstractmethod
+6. Can have implementation, constants, etc.
 
 An interface:
-1. Only defined abstract methods
+1. Only defines abstract methods
 2. No implementation, no attributes, no logic: only a contract
 3. Enforced using ABC and only @abstractmethods
+4. Can also have class-level constants
 
 These classes can be extended using single, multiple, or mixin
 inheritance.
@@ -74,6 +76,7 @@ class Duck(CanFly, CanSwim):
     pass
 
 
+# TODO: Review
 """
 Mixin
 - A mixin class is meant to be inherited from only to provide additional

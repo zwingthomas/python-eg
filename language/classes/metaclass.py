@@ -7,7 +7,7 @@
 """
 But they don't **have** to. Any callable returning a class works. But
 subclassing type is the most idiomatic and flexible approach. Take this
-function for example see def simple_meta().
+function for example: see def simple_meta().
 
 Key points:
 - "Class of a class." A class object is an instance of its metaclass

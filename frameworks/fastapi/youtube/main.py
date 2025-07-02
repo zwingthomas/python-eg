@@ -30,7 +30,7 @@ FastAPI is async by default, running on ASGI with uvicorn rather than
 WSGI with gunicorn. It is easier to use too. But it has less adoption
 and less support than Flask though. Some of these points compare to 
 Django as well, but Django is really heavy so if you need something
-lighter then FastAPI is the way to go.
+lighter, then FastAPI is the way to go.
 """
 
 
@@ -75,11 +75,13 @@ def create_item(*,  # default args follow nondefault always. To avoid use
                 is_done: Optional[bool],):
     # Path
     # Path allows you to add more detail to what you expect for the
-    # path parameter. It works with Path(default input, description)
+    # path parameter.
+    # It works with Path(default input, description, constraints)
     # This Path import is really great for your docs.
     # It can also do contraints like max_length, min_length, gt:
     # greater than, lt: less than, ge, le, and min_items/max_items for
     # lists in Pydantic v1.
+    # DO NOT USE THEM DYNAMICALLY, Bounds are evaluated at import time!
     #
     # Now it expects the item to be passed through the json body!!
     # API_BASE_URL/items with a body of Item:
@@ -118,16 +120,26 @@ def get_item(item_id: int):
 
 
 @app.put("/update-item/{item_id}")
-def update_item(is_done: bool, item_id: int = Path(None, gt=0, lt=len(items))):
+# lt=len(items) is not okay to do. Bounds are evaluated at import time!!
+# items could grow or shrink as the application runs (it does)
+def update_item(is_done: bool, item_id: int = Path(None, ge=0)):
     """
     Update the item, ensure that the id passed in is within our array
     size / index.
     """
-    items[item_id].is_done = is_done
+    try:
+        items[item_id].is_done = is_done
+    except IndexError:
+        raise HTTPException(status_code=404, detail="Item not found")
 
 
 @app.delete("/delete")
+# lt=len(items) is not okay to do. Bounds are evaluated at import time!!
+# items could grow or shrink as the application runs (it does)
 def delete_item(item_id: int = Path(...,
-                                    description="The ID of the item to delete", gt=0, lt=len(list))):
-    items = items[:item_id-1]+items[item_id:]
-    return status.HTTP_204_NO_CONTENT
+                                    description="The ID of the item to delete", ge=0)):
+    try:
+        items = items[:item_id-1]+items[item_id:]
+        return status.HTTP_204_NO_CONTENT
+    except IndexError:
+        raise HTTPException(status_code=404, detail="Item not found")

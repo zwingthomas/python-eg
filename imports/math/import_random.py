@@ -5,7 +5,8 @@
 #     https://youtu.be/sKazYCqsA24
 # Real‑Python – "The Random Module in Python"
 #     https://realpython.com/python-random/
-# ___________________________________________________________________________
+# ChatGPT - model o3
+
 """
 Hands-on tour of Python's **random** module
 ==========================================
@@ -91,15 +92,18 @@ def basic_numbers():
     h("basic_numbers")
 
     print("rnd.random() in [0,1)  →", rnd.random())
-    # randint is INCLUSIVE on both ends (⚠️ easy to forget)
-    print("randint(1,6) die →", randrange(1, 7))
+    # TODO: randint is INCLUSIVE on both ends (⚠️ easy to forget)
+    for _ in range(20):
+        print("inclusive on both ends: randint(1,6) →", rnd.randint(1, 6))
     print("uniform(1,3)   →", uniform(1, 3))
     # randrange stop is exclusive, like range()
-    print("randrange(10)  →", randrange(10))
+    print("exclusive like range(): randrange(10) →", randrange(10))
 
 # ──────────────────────────────────────────────────────────────────────
 # 3. Sequence helpers – beware mutable shuffle side‑effects
 # ──────────────────────────────────────────────────────────────────────
+
+# TODO: This is very, very cool
 
 
 def sequence_ops():
@@ -124,6 +128,7 @@ def weighted_sampling():
     pprint(Counter(pulls))
 
     # ⚠️ weights *and* cum_weights are mutually exclusive; passing both raises
+    # TODO: How to use cumulative weights?
     try:
         choices(population, weights=[1, 1, 1], cum_weights=[1, 2, 3])
     except TypeError as exc:
@@ -182,7 +187,7 @@ def subclass_custom_rng():
     h("subclass_custom_rng")
 
     class XorShift(Random):
-        """Very small XORShift demo – *not* for real use."""
+        """Very small XORShift demo - *not* for real use."""
 
         def __init__(self, seed):
             super().__init__()

@@ -8,10 +8,8 @@
 # https://www.youtube.com/watch?v=uZnp21fu8TQ&ab_channel=TechWithTim
 
 """
-
 This section is on SQLAlchemy and persisting user data. See the
 SQLAlchemy section of this repo for more information.
-
 """
 
 

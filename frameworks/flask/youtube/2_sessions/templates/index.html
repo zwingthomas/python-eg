@@ -9,8 +9,8 @@ content %}
   <p>{{x}}: The Fat</p>
   {%else%}
   <p>{{x}}: The Stupid</p>
-  Only end the if statement at the end of the entire block {% endif %} {% endfor
-  %}
+  {# Only end the if statement at the end of the entire block #} {% endif %} {%
+  endfor %}
   <p>{{r}}</p>
   {% for x in range(10) %} {% if x % 2 == 0 %}
   <p>Hello: {{x}}</p>

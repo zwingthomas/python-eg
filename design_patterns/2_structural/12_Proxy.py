@@ -16,11 +16,11 @@ Briefly,
 - Provides some functionality before and/or after calling an object
 - Same interface as the original object
     - e.g. Clients do not realize they are not accessing the real disk
+- TODO: Mezmorize differencees
 - Similar to facade, except the proxy has the same interface
 - Similar to decorator, except the proxy manages the lifecycle of the 
     object that it is hiding. Whereas the decorator simply replaces
     some functionality or adds its own before or after.
-
 """
 
 from abc import ABC, abstractmethod

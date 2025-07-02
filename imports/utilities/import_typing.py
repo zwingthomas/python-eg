@@ -75,7 +75,7 @@ def foo(output: Optional[bool] = False):
 
 # foo()  # type this out to show type hints
 
-# Declare this when you want to show you didn't just forget the type
+# TODO: review, Declare this when you want to show you didn't just forget the type
 # you actually want to show it can be anything.
 
 

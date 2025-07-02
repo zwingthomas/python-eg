@@ -14,6 +14,7 @@ def infinite_dict():
     return defaultdict(infinite_dict)
 
 
+# TODO: This is very cool
 infiniteDict = infinite_dict()
 print(infiniteDict)
 print('\n')

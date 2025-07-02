@@ -5,35 +5,37 @@
 #     https://urllib3.readthedocs.io/
 # ___________________________________________________________________________
 """
-Executable guide to **requests** – Python’s de‑facto HTTP client
+Executable guide to **requests** - Python's defacto HTTP client
 ================================================================
-Requests is *sync‑only* but extremely ergonomic, sitting between the std‑lib
-`http.client` (very low‑level) and **httpx** (sync *and* async, HTTP/2).  This
+Requests is *sync-only* but extremely ergonomic, sitting between the stdlib
+`http.client` (very low-level) and **httpx** (sync *and* async, HTTP/2).  This
 script demonstrates the most useful patterns and highlights what requests does
-—or doesn’t—give you compared with those libraries.
+—or doesn't—give you compared with those libraries.
 
 Feature comparison
 ------------------
 | Feature                       | http.client | requests | httpx |
 |-------------------------------|-------------|----------|--------|
-| High‑level API (Sessions)     | ❌          | ✅       | ✅ |
+| High-level API (Sessions)     | ❌          | ✅       | ✅ |
 | Automatic JSON encode/decode  | ❌          | ✅       | ✅ |
 | Cookie persistence            | ❌          | ✅       | ✅ |
 | Async/await support           | ❌          | ❌       | ✅ |
-| HTTP/2 out‑of‑box             | ❌          | ❌       | ✅ |
-| Built‑in retries              | ❌          | ⚠️ via urllib3 `Retry` | ⚠️ via custom transport |
+| HTTP/2 out-of-box             | ❌          | ❌       | ✅ |
+| Built-in retries              | ❌          | ⚠️ *     | ⚠️ |
 | File upload helpers           | ❌          | ✅       | ✅ |
+* via urllib3 `Retry`
+** via custom transport
 
 Sections
 --------
-1.  quick_get()                 – hello world
-2.  session_reuse()             – why `requests.Session()` matters
-3.  post_json()                 – auto JSON & headers
-4.  upload_file()               – multipart/form‑data
-5.  stream_large_download()     – chunked read with progress
-6.  timeout_and_retry()         – urllib3 Retry with back‑off
-7.  auth_and_cookies()          – Basic Auth & persisting cookies
-8.  main()                      – run demos & clean up
+1.  quick_get()                 - hello world
+2.  session_reuse()             - why `requests.Session()` matters
+3.  post_json()                 - auto JSON & headers
+4.  upload_file()               - multipart/form-data
+5.  stream_large_download()     - chunked read with progress
+6.  timeout_and_retry()         - urllib3 Retry with back-off
+7.  auth_and_cookies()          - Basic Auth & persisting cookies
+8.  main()                      - run demos & clean up
 
 > Requires `requests>=2.31` (but any 2.x likely okay).  Install: `pip install requests`.
 """
@@ -58,32 +60,34 @@ Path(TMP).mkdir(exist_ok=True)
 def h(title: str):
     print(f"\n[ {title} ]\n" + "-" * 60)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 1. Quick GET
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def quick_get():
+    # TODO
     h("quick_get")
     r = requests.get(f"{API}/get", params={"lib": "requests"}, timeout=5)
     print(r.status_code, r.url)
     print("JSON args →", r.json()["args"])
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 2. Session reuse & connection pooling
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def session_reuse():
+    # TODO
     h("session_reuse")
     with requests.Session() as s:
         for _ in range(3):
             print(s.get(f"{API}/uuid").json()["uuid"])
         # cookies persist across calls automatically
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 3. POST JSON (headers auto‑set)
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
+# 3. POST JSON (headers auto-set)
+# ──────────────────────────────────────────────────────────────────────
 
 
 def post_json():
@@ -92,9 +96,9 @@ def post_json():
     r = requests.post(f"{API}/post", json=payload, timeout=5)
     pprint(r.json()["json"])
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 4. File upload (multipart/form‑data)
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
+# 4. File upload (multipart/form-data)
+# ──────────────────────────────────────────────────────────────────────
 
 
 def upload_file():
@@ -105,9 +109,9 @@ def upload_file():
         r = requests.post(f"{API}/post", files={"file": f})
     print("server saw →", r.json()["files"])  # base64‑encoded by httpbin
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 5. Streaming download with progress bar
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def stream_large_download():
@@ -120,9 +124,9 @@ def stream_large_download():
                 f.write(chunk)
     print("wrote", dest, "bytes", dest.stat().st_size)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 6. Timeouts + robust retry logic via urllib3
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def timeout_and_retry():
@@ -140,9 +144,9 @@ def timeout_and_retry():
         r = s.get(f"{API}/status/503")  # httpbin cycles status each call
         print("final status after retries:", r.status_code)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 7. Auth & cookie persistence
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def auth_and_cookies():
@@ -156,9 +160,9 @@ def auth_and_cookies():
         jars = s.cookies.get_dict()
         print("session cookies →", jars)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 8. main
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def main():

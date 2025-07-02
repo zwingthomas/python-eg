@@ -6,20 +6,23 @@
 """
 This is the new way of doing threading. It is much simpler and even
 allows you to switch over to mutliprocessing within the same objects.
+
+# TODO: Locks, semaphores, all that jazz. A write up with the various
+        important aspects of threading that is more advanced than this.
 """
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
 import requests
 
-from import_threading import do_something_thread_executor as do_something, timer
+from import_threading import do_something_thread_executor as do_something_thread_executor, timer
 
 
 @timer
 def simple():
     with ThreadPoolExecutor() as executor:
-        f1 = executor.submit(do_something, 1)
-        f2 = executor.submit(do_something, 1)
+        f1 = executor.submit(do_something_thread_executor, 1)
+        f2 = executor.submit(do_something_thread_executor, 1)
         print(f1.result())
         print(f2.result())
 
@@ -28,7 +31,8 @@ def simple():
 def loop():
     with ThreadPoolExecutor() as executor:
         seconds = [5, 4, 3, 2, 1]
-        results = [executor.submit(do_something, x) for x in seconds]
+        results = [executor.submit(do_something_thread_executor, x)
+                   for x in seconds]
 
         # This will output as they complete
         for f in as_completed(results):
@@ -39,7 +43,7 @@ def loop():
 def map_method():
     with ThreadPoolExecutor() as executor:
         seconds = [5, 4, 3, 2, 1]
-        results = executor.map(do_something, seconds)
+        results = executor.map(do_something_thread_executor, seconds)
 
         # This will output in the order they were started
         for result in results:
@@ -113,6 +117,5 @@ if __name__ == "__main__":
     simple()
     loop()
     map_method()
-    # Note
     download_images()
     download_images_thread_pool()

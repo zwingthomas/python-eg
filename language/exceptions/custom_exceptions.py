@@ -19,6 +19,7 @@ class HardwareError(Exception):
 
     # This ensures that when you try to pickle your value, that all
     # the values are included and the type is preserved
+    # TODO: Mezmorize
     def __reduce__(self) -> tuple[Any, tuple[str, Any]]:
         return self.__class__, (self.message, self.value)
 

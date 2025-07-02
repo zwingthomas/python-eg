@@ -11,7 +11,6 @@ Briefly,
 - Two components
     - Terminal expression (in a mathematical formula this is the numbers)
     - Non-terminal expressions (this would be operations)
-
 """
 
 

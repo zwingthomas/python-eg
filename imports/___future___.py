@@ -25,7 +25,7 @@ class Node:
 
 
 class Node2:
-    data: Node2
+    data: Node2  # Only possible with __future__ import annotations
 
 
 class Node3:

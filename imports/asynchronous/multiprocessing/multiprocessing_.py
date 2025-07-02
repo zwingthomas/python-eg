@@ -23,6 +23,9 @@ At the center of concurrency is the eventloop. The eventloop will allow
 tasks to continue until they are waiting or in a stuck state. Then it
 will move on to the next task and cycle through them until they are all
 complete
+
+# TODO: A write up denoting the main parts of multiprocessing and how
+        it is able to unlock you from the Global Interpreter Lock
 """
 
 
@@ -140,9 +143,9 @@ def compare_mp_map_to_normal():
 
     print()
     b = run_normal(items, do_work)
-    print(f"a[:20]: {a[:20]}")
-    print(f"b[:20]: {b[:20]}")
-    print(f"are they equivalent? {a == b}")
+    print("a[:20]:", a[:20])
+    print("b[:20]:", b[:20])
+    print(f"are they equivalent?", a == b)
 
 
 def main():

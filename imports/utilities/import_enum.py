@@ -4,6 +4,8 @@
 # https://www.youtube.com/watch?v=TAMbq0iRUsA&list=PLFsQXEmSzyOVejqYvO-17pGc5fIFahGXf&index=25&ab_channel=Indently
 
 
+# TODO: Review Flag
+
 from enum import Enum, Flag, auto
 
 

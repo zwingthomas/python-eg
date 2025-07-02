@@ -111,7 +111,7 @@ class InventoryItem:
     def __sub__(self, other):
         if isinstance(other, InventoryItem) and self.name == other.name:
             if self.quantity > other.quantity:
-                return InventoryItem(self.name, self.quantity + other.quantity)
+                return InventoryItem(self.name, self.quantity - other.quantity)
             raise ValueError("Cannot subtract more than available quantity.")
         raise TypeError("Cannot subtract items of different types.")
 
@@ -153,7 +153,7 @@ class InventoryItem:
             raise ValueError("These are not the same item.")
         raise TypeError("Cannot compare items of different types.")
 
-    # TODO: __getstate__ & __setstate__
+    # TODO: __getstate__ & __setstate__ & __getattr__ & __setattr__
 
 
 item1 = InventoryItem("Apple", 50)

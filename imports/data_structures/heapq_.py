@@ -26,6 +26,8 @@ are going over the elements repeatedly, adding and removing from the
 list. It is substantially more efficient to use a heap.
 """
 
+# TODO: look here again, you already know this but still bad to trip on
+
 print(data)
 heapq.heapify(data)
 print(data)

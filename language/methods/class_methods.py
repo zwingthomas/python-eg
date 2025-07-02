@@ -12,6 +12,8 @@ from typing import Self  # new in Python 3.11
 # And static methods do not operate on the class at all
 #
 
+# TODO: Get more examples
+
 
 class Person:
     def __init__(self, name: str, age: int):

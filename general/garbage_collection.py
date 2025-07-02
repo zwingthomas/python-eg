@@ -18,6 +18,8 @@ you would be left with a program that consumes more and more memory.
 With them, things no longer in use get disposed of: freeing up space
 in the stack and heap.
 
+# TODO: What is the difference between the stack and heap? You know this.
+
 There is the concept of reachibility. All programs have GC Roots. These
 are global variables and things that exist throughout the entire life
 of the application. Then, anything that can be reached from these roots
@@ -28,7 +30,7 @@ Objects start life in the Young Generation's Eden Space. Then they
 go into the Survivor Space. The Survivor Space is further divided into
 s0 and s1, however it is still in the Young Generation. Most objects
 will die in the Eden Space. But if they survive multiple cycles they
-are promopted into through the Survivor Space layers and eventually
+are promoted through the Survivor Space layers and eventually
 into the Old Generation: where garbage collection happens less 
 frequently.
 
@@ -50,7 +52,6 @@ grey, and black.
 With this the application pauses briefly for inital marking and then
 continue examining grey objects while the applciation runs.
 
-
 Python's garbage collection
 Python uses a combination of reference counting and a cyclic reference
 garbage collection. Most things are cleaned up by counting when the
@@ -63,7 +64,6 @@ Issues with garbage collection
 - Memory can become fragmented, slowing down allocation over time
     - This is avoided by properly managing used pools and free pools
 - Performance overhead
-
 """
 
 """
@@ -93,6 +93,8 @@ b4 <-> b4
 When you delete b4 nothing is pointing to b4 anymore so it can be 
 garbage collected.
 
+# TODO: How does Python garbage collect cyclic references then?
+
 
 In Python there are three generations: g0, g1, and g2. All objects
 start in g0. After a certain threshold (700) of allocations the garbage 
@@ -101,12 +103,10 @@ then the survivors will move to g1. There is an assumption that most
 objects have a very short life span, but those surviving a while are 
 expected to survive longer. Thus objects in g1 will be garbage collected 
 less frequently to save on overhead. After you garbage collect 10 times,
-that is the default at least, a threshold is reached for g1 and garbage
-collection happend in g1 too. Then they are moved to g2. Then when you
+that is the default at least, a threshold is reached for g0 and garbage
+collection happens in g1 too. Then they are moved to g1. Then when you
 do garbage collection 10 times for g1 (or 100 times for g0), g2's 
 garbage collection runs.
-
-
 """
 
 import sys

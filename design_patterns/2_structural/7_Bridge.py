@@ -18,7 +18,7 @@ the size of the inheritance tree.
 - Split into multiple interfaces/classes
 - Associate them using a "bridge reference"
 
-
+TODO: This is a bad example
 """
 
 from abc import ABC, abstractmethod

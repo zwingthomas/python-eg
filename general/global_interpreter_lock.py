@@ -19,8 +19,9 @@ use the interpreter at a given time. Thus if a thread is waiting it
 can release the GIL, but only one can hold the GIL at a given time. 
 This is really bad as it seriously slows down any kind of parallelism 
 and only allows for concurrency. So I/O bound is very well handled, 
-but multiprocessing requires a module that will side step the GIL
+but parallelism requires a module that will side step the GIL
 and, while it is harder to develop than threading, it does allow you
 to side-step the GIL and work on multiple cores.
 
+# TODO: How does multiprocessing import do this?
 """

@@ -3,17 +3,18 @@ The Builder pattern is used when we have multiple parametes to
 initialize. For many parameters, it's impractical to build all 
 constructors.
 
-5 parameter combinations -> 120 constructor variants
+5 parameter combinations -> 120 constructor variants #TODO: correct?
 
 Many of the times you have optional parameters, and it should also be
 easy to read the object and how to use it.
 
 There are two ways to do the builder pattern, one more simple and one
-more classical.
+more classical. This file shows the classic way:
 
 """
 
 # The classic way to build a builder
+
 
 class NetworkService:
     def __init__(self):

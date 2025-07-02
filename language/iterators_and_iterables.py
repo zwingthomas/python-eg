@@ -87,6 +87,7 @@ print("Print again")
 for num in nums:
     print(num)
 print("Notice how it is now exhausted so nothing printed out because it did not pass an actual __iter__ that implemented __next__. Instead it returned self from __iter__ which then called __next__ on itself. Exhausting the iterator.")
+# TODO: Implement a way that avoids it being exhausted, do it on your own
 
 # The same behavior can be created with generators
 
@@ -107,3 +108,5 @@ for num in generator:
 print("Notice is also gets exhausted by looping through once")
 for num in generator:
     print(num)
+
+# TODO: Make a custom generator with iter.

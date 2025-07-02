@@ -16,6 +16,8 @@ At the center of concurrency is the eventloop. The eventloop will allow
 tasks to continue until they are waiting or in a stuck state. Then it
 will move on to the next task and cycle through them until they are all
 complete
+
+#TODO: Read this again
 """
 
 import asyncio
@@ -162,15 +164,15 @@ async def main():  # -> Coroutine object:
     # TaskGroup
     tasks = []
     async with asyncio.TaskGroup() as tg:
-        for i, sleep_time in enumerate([9, 10, 11], start=1):
-            task = tg.create_task(fetch_data(i, sleep_time))
+        for id, sleep_time in enumerate([9, 10, 11], start=1):
+            task = tg.create_task(fetch_data(sleep_time, id))
             tasks.append(task)
     results = [task.result() for task in tasks]
     for result in results:
         print(f"Received result: {result}")
 
     # Future
-    # TODO Futures are weird, what can you do with them?
+    # TODO: Futures are weird, what can you do with them?
     loop = asyncio.get_running_loop()
     future = loop.create_future()
     asyncio.create_task(set_future_result(future, random.randint(1, 10)))
@@ -183,7 +185,7 @@ async def main():  # -> Coroutine object:
     await asyncio.gather(*(modify_shared_resource() for _ in range(5)))
 
     # Semaphores
-    # Kick off 5 tasks where two tasks will have access to the resource
+    # Kick off 20 tasks where four tasks will have access to the resource
     await asyncio.gather(*(access_resource(semaphore, i) for i in range(20)))
 
     # Event

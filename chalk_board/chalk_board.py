@@ -95,3 +95,10 @@ def write_file(what):
 
 
 write_file("hello world")
+
+
+# TODO: THIS IS KEY, shallow copy because it is mutable!!!
+listeners = [[]]
+users = listeners[0]
+users.append("asdf")
+print(listeners)

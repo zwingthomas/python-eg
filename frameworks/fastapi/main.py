@@ -5,28 +5,28 @@
 
 
 """
-FastAPI Senior‑Level Concepts Tutorial
+FastAPI Concepts Tutorial
 =====================================
 This single file demonstrates **five additional concepts** that senior
 Python engineers are expected to know *beyond* the introductory CRUD
-sample you already built.  Each concept is introduced with *teaching‑style*
+sample you already built.  Each concept is introduced with *teaching-style*
 commentary so you can treat the file itself as a living notebook.
 
 Run with:
-    uvicorn fastapi_senior_concepts:app --reload
+    uvicorn main:app --reload
 
 New concepts covered
 --------------------
-1. **AsyncIO & cooperative concurrency** – high‑throughput I/O without
+1. **AsyncIO & cooperative concurrency** - high-throughput I/O without
    blocking the event loop.
-2. **Dependency Injection (DI) with `Depends`** – structuring reusable
+2. **Dependency Injection (DI) with `Depends`** - structuring reusable
    components and keeping handlers thin.
-3. **Middleware & custom exception handling** – cross‑cutting concerns
+3. **Middleware & custom exception handling** - cross-cutting concerns
    and graceful error responses.
-4. **Testing FastAPI with PyTest** – fixtures, async test clients, and
+4. **Testing FastAPI with PyTest** - fixtures, async test clients, and
    why TDD matters.
-5. **Modern static typing with Pydantic generics** – self‑documenting
-   contracts that super‑charge editor tooling and catch bugs early.
+5. **Modern static typing with Pydantic generics** - self-documenting
+   contracts that super-charge editor tooling and catch bugs early.
 
 Anything prefixed with "###" is a *teaching block*; skim them later if
 you only need the code.
@@ -50,14 +50,14 @@ from fastapi import (
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
-from pydantic.generics import GenericModel  # ✅ for v1/v2 compatibility
+from pydantic.generics import GenericModel  # for v1/v2 compatibility
 
 # ---------------------------------------------------------------------------
 # App setup
 # ---------------------------------------------------------------------------
-app = FastAPI(title="FastAPI Senior Concepts Demo")
+app = FastAPI(title="FastAPI Demo")
 
-# ✅  Middleware is *application‑wide* glue for cross‑cutting concerns like
+# Middleware is *application‑wide* glue for cross‑cutting concerns like
 # CORS, auth, or request timing.
 app.add_middleware(
     CORSMiddleware,
@@ -72,7 +72,7 @@ app.add_middleware(
 
 
 class Item(BaseModel):
-    """A to‑do item – unchanged from your starter project."""
+    """A to-do item - unchanged from your starter project."""
 
     text: str = Field(..., max_length=60)
     is_done: bool = False
@@ -117,7 +117,7 @@ T = TypeVar("T")
 
 
 async def fetch_url(session: httpx.AsyncClient, url: str) -> str:
-    """Pretend we scrape a page – realistically you'll return JSON, etc."""
+    """Pretend we scrape a page - realistically you'll return JSON, etc."""
     resp = await session.get(url, timeout=10)
     resp.raise_for_status()
     return resp.text[:80]  # first 80 chars for brevity
@@ -130,7 +130,7 @@ async def fetch_many(urls: List[str]) -> List[str]:
 
 @app.get("/scrape")
 async def scrape(urls: str):
-    """Comma‑separated list of URLs ⇒ concurrent scrape."""
+    """Comma-separated list of URLs -> concurrent scrape."""
     results = await fetch_many(urls.split(","))
     return {"results": results}
 
@@ -163,6 +163,8 @@ async def read_settings(settings: Settings = Depends(get_settings)):
 # runs *around* every request; exception handlers translate uncaught errors
 # to JSON responses so clients never see default HTML stack traces.
 
+# TODO: Mezmorize this
+
 
 class ExternalServiceError(Exception):
     """Raised when a downstream service returns 5xx."""
@@ -182,20 +184,7 @@ async def ext_service_exception_handler(_: Request, exc: ExternalServiceError):
 # Confidence to refactor fast comes from *fast* feedback loops. Below is a
 # template you can paste into `test_app.py`.
 #
-# ```python
-# import pytest
-# from httpx import AsyncClient
-# from fastapi_senior_concepts import app
-#
-# @pytest.mark.asyncio
-# async def test_create_and_read_item():
-#     async with AsyncClient(app=app, base_url="http://test") as ac:
-#         r = await ac.post("/items", json={"text": "buy milk"})
-#         assert r.status_code == 201
-#         data = r.json()
-#         r2 = await ac.get(f"/items/{0}")
-#         assert r2.json() == data
-# ```
+# See test_app.py
 
 # ---------------------------------------------------------------------------
 # 5️⃣  Static typing & Pydantic generics
@@ -207,7 +196,7 @@ async def ext_service_exception_handler(_: Request, exc: ExternalServiceError):
 # *and* Pydantic v2, this continues to work.
 
 
-class APIResponse(GenericModel, Generic[T]):  # ✅ Note GenericModel first
+class APIResponse(GenericModel, Generic[T]):  # Note GenericModel first
     data: T
     success: bool = True
 

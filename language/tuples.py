@@ -40,7 +40,7 @@ In lists you want to store homogenous data, data that is all the same
 type and that you might change or update.
 
 In tuples you want to store heterogenous data, data that is all 
-different, but pertains to the same type of data.
+different, but pertains to the same thing.
 
 Tuples are often the return type, especially for fetch calls.
 

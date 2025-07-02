@@ -9,6 +9,7 @@ print(all("i" in name for name in names))  # output: False
 # witness is assigned to emma because Emma was the name that caused it
 # it to shortcircuit and terminate the any statement. Thus, it was the
 # last evaluated.
+# TODO: Good use of walrus operator
 print(any("mm" in (witness := name) for name in names))
 print(witness)
 

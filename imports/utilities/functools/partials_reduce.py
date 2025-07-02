@@ -41,6 +41,8 @@ admin.power_off_windows()
 
 
 # Reduce
+# TODO: So this takes the first two initially, then reuses the return
+#       value repeatedly?
 def multiply(a, b):
     print(f"{a=} multiplied by {b=}: {a * b}")
     return a * b

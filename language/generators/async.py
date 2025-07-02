@@ -6,6 +6,8 @@
 import asyncio
 import contextlib
 
+# TODO: Full of great tid-bits, learn this well
+
 
 class Resource:
     def __init__(self, name):

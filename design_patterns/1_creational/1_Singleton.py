@@ -30,6 +30,8 @@ Briefly,
         have that one instance forever. You could kill it given 
         certain circumstances but that works against the singleton
         pattern.
+
+#TODO: Mezmorize this implementation
 """
 
 # Naive implementation that will not work in a multi-threaded
@@ -53,8 +55,23 @@ class Singleton(type):
 
 
 class NetworkDriver(metaclass=Singleton):
-    # TODO: Nothing, just look at this more.
-    """"""
+    # TODO: inspect
+    """Think of Python objects as a two-tier system
+        instance -> class -> *metaclass* 
+        - Instances are created by their class dog = Dog()
+        - A class is itself an object created by another class called 
+            its "metaclass".
+        - By default, every user-defined class is built by the built-in
+            metaclass type.
+        - A metaclass can intercept or customize the moment a class is
+            constructed and/or called, because it inherits type and 
+            overrides special methods such as __new__, __init__ or, as
+            in this example, __call__
+        - Singleton in this case **is** a metaclass as it inherits from
+            type
+        - __call__ will run on any class that lists Singleton as its
+            metaclass
+        """
 
     def log(self):
         print(f"{self}")

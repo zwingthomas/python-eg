@@ -28,6 +28,7 @@ print("""[
     if string[0] == 'a'
     if string[-1] == 'y'
 ]""")
+# TODO Reivew
 print(options := ["any", "albany", "apple", "happy", "world", "hello", ""])
 print([
     string

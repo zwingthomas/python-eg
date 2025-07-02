@@ -7,9 +7,9 @@ process until it eventually gets the return result "ready". However,
 this scales incredibly poorly and could result in the time intensive
 processing unit to be overloaded with polling. Instead we can implement
 a registry in front of the time intensive process and the users 
-register their interest in this result and they are the users are 
+register their interest in this result and they, the users, are 
 notified by the registry when their result is available. They can
-also be only notified for type of results they are interested in.
+also be only notified for a type of result that they are interested in.
 
 Briefly,
 - Defines a subscription mechanism

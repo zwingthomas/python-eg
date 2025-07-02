@@ -8,24 +8,24 @@
 # ChatGPT - model o3
 
 """
-Comprehensive tour of Python’s **pickle** module
+Comprehensive tour of Python's **pickle** module
 ================================================
 This script demonstrates the most common—and a few advanced—features of
 `pickle`, along with **clear warnings** about its security pitfalls.
 
-⚠️  **Never unpickle data you didn’t create yourself**.  A crafted pickle can
-execute arbitrary code when it’s deserialised.
+⚠️  **Never unpickle data you didn't create yourself**.  A crafted pickle can
+execute arbitrary code when it's deserialised.
 
 Sections
 --------
-1.  quick_demo()              – bytes round-trip without touching disk
-2.  file_pickle_unpickle()    – save/load to a file, highest protocol
-3.  protocol_sizes()          – size & speed across protocols 0…7
-4.  custom_state()            – `__getstate__` & `__setstate__`
-5.  copyreg_lambda()          – serialising a module‑level lambda with `copyreg`
-6.  deep_copy_with_pickle()   – pickle as a cheap deep-copy hack
-7.  peek_inside()             – disassemble protocol 0 stream with `pickletools`
-8.  main()                    – run demos & clean up tmp files
+1.  quick_demo()              - bytes round-trip without touching disk
+2.  file_pickle_unpickle()    - save/load to a file, highest protocol
+3.  protocol_sizes()          - size & speed across protocols 0…7
+4.  custom_state()            - `__getstate__` & `__setstate__`
+5.  copyreg_lambda()          - serialising a module-level lambda with `copyreg`
+6.  deep_copy_with_pickle()   - pickle as a cheap deep-copy hack
+7.  peek_inside()             - disassemble protocol 0 stream with `pickletools`
+8.  main()                    - run demos & clean up tmp files
 
 Run it directly:
 
@@ -55,13 +55,13 @@ TMP_DIR.mkdir(exist_ok=True)
 def _tmpfile(name: str) -> Path:
     return TMP_DIR / name
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # Helper class used across demos (must be module-level for pickling)
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 class Cache:
-    """Pretend this hits a DB; we don’t want the connection in the pickle."""
+    """Pretend this hits a DB; we don't want the connection in the pickle."""
 
     def __init__(self, url: str):
         self.url = url
@@ -73,6 +73,7 @@ class Cache:
         return f"value_for_{key}"
 
     # — pickling hooks ————————————————————————————
+    # TODO: get __getstate__ and __setstate__ into dunder_methods.py
     def __getstate__(self):
         state = self.__dict__.copy()
         state["_conn"] = None  # drop live connection
@@ -83,16 +84,16 @@ class Cache:
         # lazily recreate connection
         self._conn = f"<reconnected {self.url}>"
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # Module‑level lambda + copyreg helper so it *is* picklable (demo only!)
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def adder(x, y): return x + y  # noqa: E731  – must live at module scope
 
 
 def _reduce_lambda(func: types.FunctionType):
-    """Serialize a lambda by marshaling its bytecode.  ⚠️  Demo‑only, unsafe."""
+    """Serialize a lambda by marshaling its bytecode. Demo-only, unsafe."""
     code_bytes = marshal.dumps(func.__code__)
     return _rebuild_lambda, (code_bytes,)
 
@@ -105,9 +106,9 @@ def _rebuild_lambda(code_bytes: bytes):
 # Register reducer for *all* function objects – good enough for demo
 copyreg.pickle(types.FunctionType, _reduce_lambda)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 1. quick demo – immediate round‑trip
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def quick_demo() -> None:
@@ -121,9 +122,9 @@ def quick_demo() -> None:
     back = pickle.loads(blob)              # bytes → object
     print("Round-tripped equal?", back == data)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 2. Pickle to / from a file with highest protocol
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def file_pickle_unpickle() -> None:
@@ -142,9 +143,9 @@ def file_pickle_unpickle() -> None:
         loaded = pickle.load(f)
     print("Loaded == original?", loaded == inventory)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 3. Protocol comparison – size & timing
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def protocol_sizes() -> None:
@@ -163,9 +164,9 @@ def protocol_sizes() -> None:
             fastest = proto
     print("Fastest observed → protocol", fastest)
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 4. Customising with __getstate__ / __setstate__
-# ──────────────────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────-
+# 4. Customizing with __getstate__ / __setstate__
+# ──────────────────────────────────────────────────────────────────────
 
 
 def custom_state() -> None:
@@ -179,9 +180,9 @@ def custom_state() -> None:
     print("Hits after restore:", resurrected._hits)
     print("Connection after restore:", resurrected._conn)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 5. copyreg_lambda – pickling the module‑level lambda
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def copyreg_lambda() -> None:
@@ -193,9 +194,11 @@ def copyreg_lambda() -> None:
     except Exception as exc:
         print("Lambda pickling failed:", exc)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 6. Deep copy via pickle
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
+
+# TODO: This is very cool
 
 
 def deep_copy_with_pickle() -> None:
@@ -206,15 +209,16 @@ def deep_copy_with_pickle() -> None:
     print("Original →", orig)
     print("Clone    →", clone)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 7. Inspect pickle opcodes with pickletools.dis
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def peek_inside() -> None:
     print("\n[ peek_inside ]\n" + "-" * 60)
 
     obj = {"pi": 3.14159, "ts": _dt.datetime(2025, 1, 1)}
+    # TODO: What are the protocols for pickle?
     blob = pickle.dumps(obj, protocol=0)  # protocol 0 = printable ASCII subset
 
     print("Raw pickle bytes →", blob.decode("latin-1"))

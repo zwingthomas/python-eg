@@ -1,6 +1,8 @@
 from itertools import groupby, tee
 
 
+# TODO: Commit to memory
+
 def get_state(person):
     return person["state"]
 

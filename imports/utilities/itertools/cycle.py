@@ -1,5 +1,6 @@
 from itertools import cycle
 
+# TODO: Add explanation
 
 boolean = cycle([True, False])
 

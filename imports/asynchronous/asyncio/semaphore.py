@@ -39,6 +39,7 @@ async def send_request(
 async def main() -> int:
     semaphore = asyncio.Semaphore(2)
     async with httpx.AsyncClient() as client:
+        # TODO: Make this better with asyncio.TaskGroup()
         tasks = [asyncio.create_task(send_request(
             client, semaphore)) for _ in range(10)]
         status_codes = await asyncio.gather(*tasks)

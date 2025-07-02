@@ -21,10 +21,12 @@ you right the tests before you write the code.
 You want to test the less obvious things. Test the different things
 that would make a system fail: the edge cases. To ensure the program
 works in all given scenarios.
+
+# TODO: Implement these for Traxy
 """
 
 
-from main import add, divide, get_weather, UserManager
+from main import add, divide, get_weather
 import pytest
 
 
@@ -47,21 +49,3 @@ def test_add():
 def test_divide():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         divide(10, 0)
-
-
-@pytest.fixture
-def user_manager():
-    """ Creates a fresh instance of UserManager before each test """
-    """ This create code smells with the singleton design pattern """
-    return UserManager()
-
-
-def test_add_user(user_manager):
-    assert user_manager.add_user("john_doe", "john@example.com") == True
-    assert user_manager.get_user("john_doe") == "john@example.com"
-
-
-def test_add_duplicate_user(user_manager):
-    user_manager.add_user("john_doe", "john@example.com")
-    with pytest.raises(ValueError):
-        user_manager.add_user("john_doe", "john@example.com")

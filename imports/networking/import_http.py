@@ -9,35 +9,35 @@
 # ChatGPT - model o3
 
 """
-Python’s built‑in **http** stack: `http.client`, `http.server`, `urllib.parse`
+Python's built-in **http** stack: `http.client`, `http.server`, `urllib.parse`
 ============================================================================
-This tutorial contrasts the low‑level std‑lib approach with higher‑level
+This tutorial contrasts the low-level std-lib approach with higher-level
 packages like **requests** and **httpx** while providing runnable examples.
-No third‑party dependencies are required.
+No third-party dependencies are required.
 
-TL;DR differences
+TL;DR differences #TODO: Mezmorize this
 -----------------
-* **http.client** – very low level; you create a connection, craft headers &
+* **http.client** - very low level; you create a connection, craft headers &
   send bytes.  No JSON helpers, no automatic redirects, no connection pooling.
-* **requests** – sync, high‑level, batteries‑included; automatic JSON,
+* **requests** - sync, high-level, batteries-included; automatic JSON,
   sessions, cookies, retry, redirects, file uploads.
-* **httpx** – requests‑style API *plus* first‑class **async** support and
-  HTTP/2.  Extra dependency but extremely feature‑rich.
+* **httpx** - requests-style API *plus* first-class **async** support and
+  HTTP/2.  Extra dependency but extremely feature-rich.
 
 Sections
 --------
-1.  parse_url()               – dissect URLs with `urllib.parse`
-2.  simple_get()              – blocking GET with http.client
-3.  post_json()               – send JSON, read JSON manually
-4.  chunked_download()        – stream & write to file
-5.  tiny_http_server()        – 5‑line "Hello" server with `http.server`
-6.  requests_vs_httpx()       – side‑by‑side (only if packages available)
-7.  main()                    – run all demos
+1.  parse_url()               - dissect URLs with `urllib.parse`
+2.  simple_get()              - blocking GET with http.client
+3.  post_json()               - send JSON, read JSON manually
+4.  chunked_download()        - stream & write to file
+5.  tiny_http_server()        - 5-line "Hello" server with `http.server`
+6.  requests_vs_httpx()       - side-by-side (only if packages available)
+7.  main()                    - run all demos
 
 Run directly:
 
 ```bash
-python http_stdlib_tutorial.py
+python import_http.py
 ```
 """
 
@@ -73,19 +73,21 @@ API_HOST = "httpbin.org"
 
 
 def parse_url():
+    # urllib
     h("parse_url")
     url = "https://example.com:8443/path/to?q=pythøn#frag"
     parts = parse.urlsplit(url)
     pprint(parts._asdict())
     rebuilt = parse.urlunsplit(parts)
-    print("round‑trip →", rebuilt)
+    print("round-trip ->", rebuilt)
 
 # ————————————————————————————————————————————————————————————————
-# 2. Low‑level GET request
+# 2. Low-level GET request
 # ————————————————————————————————————————————————————————————————
 
 
 def simple_get():
+    # TODO: Mezmorize
     h("simple_get")
     conn = client.HTTPSConnection(API_HOST, timeout=5)
     conn.request("GET", "/get?demo=stdlib")
@@ -178,13 +180,14 @@ def tiny_http_server():
 
 
 def requests_vs_httpx():
+    # TODO: Mezmorize
     h("requests_vs_httpx")
     try:
         import requests
 
         r = requests.get(f"https://{API_HOST}/get", params={"lib": "requests"})
         print("requests status:", r.status_code,
-              "auto‑json:", r.json()["args"])
+              "auto-json:", r.json()["args"])
     except ImportError:
         print("requests not installed → skip demo")
 
@@ -195,11 +198,11 @@ def requests_vs_httpx():
             r = client_httpx.get(
                 f"https://{API_HOST}/get", params={"lib": "httpx"})
             print("httpx status:", r.status_code,
-                  "auto‑json:", r.json()["args"])
+                  "auto-json:", r.json()["args"])
     except ImportError:
         print("httpx not installed → skip demo")
 
-    print("Note how both high‑level libs auto‑decode JSON, manage redirects, etc.")
+    print("Note how both high-level libs auto-decode JSON, manage redirects, etc.")
 
 # ————————————————————————————————————————————————————————————————
 # 7. main

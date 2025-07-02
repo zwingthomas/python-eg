@@ -19,6 +19,8 @@ def gen():
 # it was introduced in order to faciliate the bi-directional nature
 # of the Python language.
 
+# TODO
+
 def worker(f):
     tasks = collections.deque()
     value = None

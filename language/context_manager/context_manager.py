@@ -3,6 +3,8 @@
 # Expert Python Tutorial #6 - Context Managers
 # https://www.youtube.com/watch?v=Lv1treHIckI&ab_channel=TechWithTim
 
+
+# TODO: Review
 import contextlib
 file = open("file.txt", "w")
 file.write("hello")  # What happens if there is an exception here?

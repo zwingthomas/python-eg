@@ -7,3 +7,5 @@ print(list(squares))
 # TODO How is this powerful?
 squares = starmap(pow, zip(range(10), two))
 print(list(squares))
+
+# TODO: Compare this with map, add explanation

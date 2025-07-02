@@ -3,11 +3,12 @@ Allows for undo/redo and the keeping of a chain of events. This is how
 Ctrl+Z works. Essentially you keep a chain of events and with it a 
 chain of states. This allows for you to store previous states without
 the implementation details. Ctrl+Z has no idea what you actually did, 
-it just knows how to get back ot the state you were in.
+it just knows how to get back to the state you were in.
 
 Briefly,
 - Save and restore previous state without revealing implementation
     details
+#TODO: Mezmorize these 3 components
 - 3 components:
     1. Memento - stores the state
     2. Originator - creates the state
@@ -17,7 +18,6 @@ Briefly,
 
 We are going to be making a simple implementation of storing state
 that is overwritten one string at a time.
-
 """
 
 from dataclasses import dataclass

@@ -1,5 +1,7 @@
 from itertools import islice
 
+# TODO: Add explanation! Commit to memory
+
 # Combine arrays without storing the new array in memory
 letters = ['a', 'b', 'c', 'd', 'e']
 numbers = [0, 1, 2, 3]

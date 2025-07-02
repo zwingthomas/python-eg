@@ -17,6 +17,7 @@ In our example we will make a group chat with several users that can
 all communicate through one mediator.
 """
 
+# TODO: What does this do? I know kind of, but I'm assuming there's more
 from __future__ import annotations
 
 

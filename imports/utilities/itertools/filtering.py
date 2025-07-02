@@ -4,6 +4,8 @@ from itertools import compress, filterfalse, dropwhile, takewhile
 def lt_2(x):
     return x < 2
 
+# TODO: Add explanations
+
 
 letters = ['a', 'b', 'c', 'd']
 selectors = [True, True, False, True]

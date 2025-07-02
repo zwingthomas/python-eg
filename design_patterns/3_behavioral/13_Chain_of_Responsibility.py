@@ -1,6 +1,6 @@
 """
 Conceptually this design pattern is about linking handlers to one
-another, feeding the output of one into the input of anohter passing
+another, feeding the output of one into the input of another passing
 it up the chain. Or it could consume the request at any point in the 
 chain depending on the logic. This allows for very flexible pipelines
 where different requests will be managed by the same sequence of 
@@ -12,6 +12,8 @@ Briefly,
 - Each handler contains a reference to the next handler
 - Each handler decides to process the request AND / OR pass it on
 - Requests can be of different types
+
+#TODO: Try to follow this code again, maybe mezmorize
 """
 from __future__ import annotations
 from abc import ABC, abstractmethod

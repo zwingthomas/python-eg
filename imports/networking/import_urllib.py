@@ -5,18 +5,18 @@
 #     https://realpython.com/python-urllib-request/
 # ___________________________________________________________________________
 """
-Hands‑on guide to Python’s **urllib** package
+Hands-on guide to Python's **urllib** package
 ===========================================
 The `urllib` family (`urllib.request`, `urllib.parse`, `urllib.error`,
-`urllib.robotparser`) offers std‑lib tools for HTTP requests, URL handling and
-robots.txt parsing.  It sits between raw `socket`/`http.client` and high‑level
+`urllib.robotparser`) offers std-lib tools for HTTP requests, URL handling and
+robots.txt parsing.  It sits between raw `socket`/`http.client` and high-level
 clients like **requests** and **httpx**.
 
 Feature snapshot
 ----------------
 | Feature                         | http.client | urllib   | requests | httpx |
 |---------------------------------|-------------|----------|----------|-------|
-| High‑level URL opener           | ❌          | ✅       | ✅        |  ✅   |
+| High-level URL opener           | ❌          | ✅       | ✅        |  ✅   |
 | Automatic JSON helpers          | ❌          | ❌       | ✅        |  ✅   |
 | Cookie & redirect handling      | ❌          | ⚠️ *     | ✅        |  ✅   |
 | Async API                       | ❌          | ❌       | ❌        |  ✅   |
@@ -27,14 +27,14 @@ Feature snapshot
 
 Sections
 --------
-1.  parse_demo()                 – `urllib.parse` basics
-2.  simple_get()                 – `urllib.request.urlopen`
-3.  post_form()                  – encode data & custom headers
-4.  custom_opener()              – add User‑Agent + redirects off
-5.  error_handling()             – HTTPError & URLError
-6.  robots_txt_check()           – `urllib.robotparser`
-7.  ssl_context()                – validate vs ignore certs
-8.  main()                       – run demos & tidy up
+1.  parse_demo()                 - `urllib.parse` basics
+2.  simple_get()                 - `urllib.request.urlopen`
+3.  post_form()                  - encode data & custom headers
+4.  custom_opener()              - add User-Agent + redirects off
+5.  error_handling()             - HTTPError & URLError
+6.  robots_txt_check()           - `urllib.robotparser`
+7.  ssl_context()                - validate vs ignore certs
+8.  main()                       - run demos & tidy up
 
 Run directly:
 
@@ -62,12 +62,13 @@ TMP.mkdir(exist_ok=True)
 def h(title: str):
     print(f"\n[ {title} ]\n" + "-" * 60)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 1. URL parsing helpers
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def parse_demo():
+    # TODO: Learn this
     h("parse_demo")
     url = "https://user:pw@example.com:8443/path;params?x=1&y=2#frag"
     parts = up.urlparse(url)
@@ -75,9 +76,9 @@ def parse_demo():
     rebuilt = up.urlunparse(parts)
     print("round‑trip →", rebuilt)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 2. Simple GET – urlopen returns bytes
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def simple_get():
@@ -87,9 +88,9 @@ def simple_get():
         data = resp.read(80)
         print("first 80 bytes →", data)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 3. POST form data
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def post_form():
@@ -105,9 +106,9 @@ def post_form():
         body = json.loads(resp.read())  # httpbin always returns JSON
         pprint(body["form"])
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 4. Custom opener (User-Agent / disable redirects)
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def custom_opener():
@@ -119,11 +120,11 @@ def custom_opener():
     try:
         opener.open(req)
     except urllib.error.HTTPError as exc:
-        print("redirect blocked – status", exc.code)
+        print("redirect blocked - status", exc.code)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 5. Error handling
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def error_handling():
@@ -138,9 +139,9 @@ def error_handling():
     except urllib.error.HTTPError as exc:
         print("HTTPError status →", exc.code, exc.reason)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 6. robots.txt parsing
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def robots_txt_check():
@@ -150,9 +151,9 @@ def robots_txt_check():
     robot.read()
     print("Allowed /dev?", robot.can_fetch("demo‑bot", "/dev"))
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 7. SSL context tweak – ignore invalid certs (⚠️ don’t in prod!)
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def ssl_context():
@@ -166,9 +167,9 @@ def ssl_context():
     except Exception as exc:
         print("SSL demo failed (network?) →", exc)
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 # 8. main
-# ──────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────
 
 
 def main():

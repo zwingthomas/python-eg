@@ -8,12 +8,11 @@
 # https://www.youtube.com/watch?v=uZnp21fu8TQ&ab_channel=TechWithTim
 
 """
-
 Chapter 5
 Now let's talk about sessions. We would need to login again and again
 and again everytime we want to see the user's name. We would also have
 to set up parameters and everything in order to just pass around the 
-user name. This is where sessions come in. Sessions are great because
+username. This is where sessions come in. Sessions are great because
 sessions are temporary. They're stored on the webserver. And they're
 there for quick access for while the user is currently on the website.
 It will store information about what the user is doing at a given time
@@ -22,7 +21,6 @@ and how they move around the website.
 When you want to flash a message. You are passing information from 
 one page to the next page. An example would be if you were to login,
 you flash "logged in successful". Or if you logout "logout successful".
-
 """
 
 

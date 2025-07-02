@@ -8,7 +8,7 @@
 # ChatGPT - Model o3
 
 """
-Walk‑through of Python’s **math** standard‑library module
+Walk-through of Python's **math** standard-library module
 =======================================================
 The goal is to *run & read* this file to see how each function behaves and
 where surprises lurk.
@@ -17,16 +17,16 @@ Common tripping points called out with ⛔ or ⚠️ markers.
 
 Sections
 --------
-1.  constants_demo()            – e, pi, tau, inf, nan
-2.  basic_ops()                 – sqrt vs **½, pow vs **, fmod vs %, remainder()
-3.  int_and_fraction()          – ceil, floor, trunc, modf, frexp, ldexp
-4.  trig_radians()              – sin/cos/tan: beware *degrees*!
-5.  degrees_conversion()        – radians(), degrees(), isclose() pitfalls
-6.  combinatorics()             – factorial, comb, perm (int‑only!)
-7.  special_functions()         – log varieties, expm1, erf, gamma, hypot
-8.  float_edge_cases()          – nan/inf propagation, copysign, isnan, isfinite
-9.  math_vs_cmath()             – domain errors & complex fallback
-10. main()                      – run all demos
+1.  constants_demo()            - e, pi, tau, inf, nan
+2.  basic_ops()                 - sqrt vs **½, pow vs **, fmod vs %, remainder()
+3.  int_and_fraction()          - ceil, floor, trunc, modf, frexp, ldexp
+4.  trig_radians()              - sin/cos/tan: beware *degrees*!
+5.  degrees_conversion()        - radians(), degrees(), isclose() pitfalls
+6.  combinatorics()             - factorial, comb, perm (int-only!)
+7.  special_functions()         - log varieties, expm1, erf, gamma, hypot
+8.  float_edge_cases()          - nan/inf propagation, copysign, isnan, isfinite
+9.  math_vs_cmath()             - domain errors & complex fallback
+10. main()                      - run all demos
 
 Run directly:
 
@@ -77,10 +77,12 @@ def basic_ops():
     print("sqrt(2)", math.sqrt(2))
     print("2 ** 0.5", 2 ** 0.5)  # same but sqrt is clearer
 
+    # TODO: Interesting
     # pow ⚠️  math.pow promotes to float, ** keeps int→int when possible
     print("math.pow(2, 3) ->", math.pow(2, 3))  # always float 8.0
     print("2 ** 3        ->", 2 ** 3)           # int 8
 
+    # TODO: Interesting
     # ⛔ fmod vs %  – different sign rules for negatives
     print("-3 % 2   ->", -3 % 2)           # 1 (Python’s mod wraps toward +∞)
     print("fmod(-3,2)->", math.fmod(-3, 2))  # -1 (wraps toward 0 like C)
@@ -95,7 +97,7 @@ def basic_ops():
 
 def int_and_fraction():
     h("int_and_fraction")
-    x = 3.14159
+    x = math.pi
     print("ceil", math.ceil(x))
     print("floor", math.floor(x))
     print("trunc", math.trunc(x))
@@ -121,6 +123,7 @@ def trig_radians():
     print("cos(30°)   ->", math.cos(angle_rad))
     print("tan(30°)   ->", math.tan(angle_rad))
 
+    # TODO: interesting
     # ⛔ Passing degrees directly is wrong!
     wrong = math.sin(30)
     print("sin(30) assuming radians ->", wrong)

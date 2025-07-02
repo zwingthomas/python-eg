@@ -47,6 +47,7 @@ class Person:
         return self.__name
 
     @Name.setter
+    # TODO: Review
     # Usually this would not work as method overloading is not a feature
     # of Python. Our decorators allow us to do this.
     def Name(self, value):
@@ -63,6 +64,7 @@ class Person:
 
     @staticmethod
     def greeter():  # static method does not pass self
+        """Can be called directly on the class"""
         print("Hello, create a person!")
 
 

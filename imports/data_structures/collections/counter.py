@@ -7,7 +7,7 @@ cnt_of_t = cnt['T'] + cnt['t']
 print(cnt_of_t)
 
 print(list(cnt.elements()))
-print(cnt.most_common(3))
+print(cnt.most_common(3))  # TODO: Most important you know, you do
 print(cnt.total())
 
 # Generate a list with elements
