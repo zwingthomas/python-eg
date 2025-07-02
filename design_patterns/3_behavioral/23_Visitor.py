@@ -100,5 +100,5 @@ if __name__ == "__main__":
     evaluator = EvaluateVisitor()
     printer = PrintVisitor()
 
-    print("Expression :", printer.visit_multiply(expr))
+    print("Expression:", printer.visit_multiply(expr))
     print("Evaluates to:", evaluator.visit_multiply(expr))

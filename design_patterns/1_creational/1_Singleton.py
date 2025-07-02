@@ -53,6 +53,9 @@ class Singleton(type):
 
 
 class NetworkDriver(metaclass=Singleton):
+    # TODO: Nothing, just look at this more.
+    """"""
+
     def log(self):
         print(f"{self}")
 
